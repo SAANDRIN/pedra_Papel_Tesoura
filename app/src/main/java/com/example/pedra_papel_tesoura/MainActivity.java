@@ -2,9 +2,12 @@ package com.example.pedra_papel_tesoura;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,10 +35,41 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void verificarGanhador( String escolhaUsuario ) {
+    private String gerarEscolhaAleatoriaApp() {
 
-        System.out.println("Item clicado: " + escolhaUsuario);
+        String[] opcoes = {"Pedra", "Papel", "Tesoura"};
+
+        int numeroAleatorio = new Random().nextInt(3);
+
+        ImageView imagemApp = findViewById(R.id.image_app);
+
+        String escolhaApp = opcoes[numeroAleatorio];
+
+        switch( escolhaApp ) {
+            case "Pedra" :
+                imagemApp.setImageResource(R.drawable.pedra);
+                break;
+            case "Papel" :
+                imagemApp.setImageResource(R.drawable.papel);
+                break;
+            case "Tesoura" :
+                imagemApp.setImageResource(R.drawable.tesoura);
+                break;
+        }
+
+        return escolhaApp;
 
     }
+
+    private void verificarGanhador( String escolhaUsuario ) {
+
+        String escolhaApp = gerarEscolhaAleatoriaApp();
+
+
+        // System.out.println("Item clicado: " + escolhaUsuario);
+
+    }
+
+
 
 }
